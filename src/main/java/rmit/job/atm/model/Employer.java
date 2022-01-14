@@ -18,6 +18,8 @@ public class Employer {
             generator = "employer_seq")
     private Long id;
 
+    // TODO: associate user
+
     private String fullName;
 
     @OneToMany(mappedBy = "employer")

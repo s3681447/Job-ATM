@@ -17,6 +17,8 @@ public class Employee {
 			generator = "employee_seq")
 	private Long id;
 
+	// TODO: associate user
+
 	private String fullName;
 
 	private String location;
