@@ -21,12 +21,15 @@ public class Category {
 
     private String name;
 
-//    private Long parentId;
+    //// private Long parentId;
     @JsonBackReference
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Category parentCategory;
 
     @OneToMany(mappedBy = "parentCategory")
     private Set<Category> subcategories = new HashSet<>();
+
+    @OneToMany(mappedBy = "category")
+    private Set<Preference> preferences;
 }

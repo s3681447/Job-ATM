@@ -1,6 +1,5 @@
 package rmit.job.atm.model;
 
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -17,9 +16,14 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "application_seq")
     private Long id;
 
-    // TODO: add annotation
-    private Long jobID;
+    //// private Long employID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
-    // TODO: add annotation
-    private Long categoryID;
+    //// private Long jobID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "job_id")
+    private Job job;
+
 }

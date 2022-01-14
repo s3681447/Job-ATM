@@ -19,12 +19,15 @@ public class Job {
     private Long id;
 
     //// private String employerID;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employer_id")
     private Employer employer;
 
     @OneToMany(mappedBy = "job")
     private Set<JobCategory> jobCategories;
+
+    @OneToMany(mappedBy = "job")
+    private Set<Application> applications;
 
     private String title;
 

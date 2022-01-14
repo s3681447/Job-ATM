@@ -1,9 +1,9 @@
 package rmit.job.atm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -20,6 +20,12 @@ public class User {
 
     @Column(unique = true)
     private String tel;
+
+    @OneToOne(mappedBy = "user")
+    private Employee employee;
+
+    @OneToOne(mappedBy = "user")
+    private Employer employer;
 
     private String pin;
 

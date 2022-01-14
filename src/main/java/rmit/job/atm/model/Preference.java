@@ -16,9 +16,13 @@ public class Preference {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "preference_seq")
     private Long id;
 
-    // TODO: add annotation
-    private Long employeeID;
+    //// private Long employeeID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
-    // TODO: add annotation
-    private Long categoryID;
+    //// private Long categoryID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
 }

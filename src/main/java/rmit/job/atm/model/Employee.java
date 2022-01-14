@@ -3,9 +3,9 @@ package rmit.job.atm.model;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter @Setter
@@ -17,11 +17,18 @@ public class Employee {
 			generator = "employee_seq")
 	private Long id;
 
-	// TODO: associate user
+	@OneToOne //(fetch = FetchType.LAZY)
+	private User user;
+
+	@OneToMany(mappedBy = "employee")
+	Set<Application> applications;
+
+	@OneToMany(mappedBy = "employee")
+	private Set<Preference> preferences;
 
 	private String fullName;
 
 	private String location;
 
-	private Double salary;
+//	private Double salary;
 }

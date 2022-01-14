@@ -3,7 +3,6 @@ package rmit.job.atm.model;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -18,7 +17,8 @@ public class Employer {
             generator = "employer_seq")
     private Long id;
 
-    // TODO: associate user
+    @OneToOne(fetch = FetchType.LAZY)
+    private User user;
 
     private String fullName;
 
