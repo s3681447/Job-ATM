@@ -20,13 +20,13 @@ public class Application {
     private Long id;
 
     //// private Long employID;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JsonBackReference(value = "applications-employee")
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
     //// private Long jobID;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JsonBackReference(value = "applications-job")
     @JoinColumn(name = "job_id")
     private Job job;

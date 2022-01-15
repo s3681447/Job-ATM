@@ -20,14 +20,14 @@ public class Preference {
     private Long id;
 
     //// private Long employeeID;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference(value = "jobCategories-employee")
+    @ManyToOne//(fetch = FetchType.LAZY)
+    @JsonBackReference(value = "prefernce-employee")
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
     //// private Long categoryID;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference(value = "jobCategories-category")
+    @ManyToOne//(fetch = FetchType.LAZY)
+    @JsonBackReference(value = "prefernce-category")
     @JoinColumn(name = "category_id")
     private Category category;
 }

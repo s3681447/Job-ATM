@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Getter
 @Setter
@@ -24,8 +24,8 @@ public class Category {
     private String name;
 
     //// private Long parentId;
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne//(fetch = FetchType.LAZY)
+    @JsonBackReference(value = "category-parentCategory")
     @JoinColumn(name = "parent_id")
     private Category parentCategory;
 

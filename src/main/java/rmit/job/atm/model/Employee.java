@@ -11,7 +11,8 @@ import java.util.List;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 @RequiredArgsConstructor
 @Table(name = "employees")
 public class Employee {
@@ -21,7 +22,7 @@ public class Employee {
 	private Long id;
 
 	@OneToOne //(fetch = FetchType.LAZY)
-	@JsonBackReference(value = "employees-user")
+//	@JsonBackReference(value = "employees-user")
 	private User user;
 
 	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL,
@@ -34,7 +35,10 @@ public class Employee {
 
 	private String fullName;
 
+	private Integer age;
+
 	private String location;
 
-//	private Double salary;
+	private String expLevel;
+
 }
