@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import rmit.job.atm.model.Job;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface JobRepository extends PagingAndSortingRepository<Job, Long> {
 
@@ -15,10 +16,9 @@ public interface JobRepository extends PagingAndSortingRepository<Job, Long> {
     @RestResource(path = "byTitle")
     List<Job> findByTitleContainingIgnoreCase(@Param("q") String keyword);
 
-
 //    @Query(value = "SELECT j FROM Jobs j " +
 //            "JOIN Jobs_Categories jc ON j.id = jc.job_id " +
 //            "JOIN Categories c ON c.id = jc.category_id " +
-//            "WHERE c.id = :cateId", nativeQuery = true) // TODO
+//            "WHERE c.id = :cateId", nativeQuery = true) // TODO: fix bug
 //    List<Job> findByCategoryId(@PathVariable("cateId") Long categoryId);
 }
