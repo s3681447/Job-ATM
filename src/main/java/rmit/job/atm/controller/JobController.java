@@ -12,6 +12,8 @@ import rmit.job.atm.repository.JobRepository;
 
 import java.util.Optional;
 
+import static rmit.job.atm.controller.ResponseUtil.resourceUri;
+
 @RestController
 @RequestMapping(value = "/api")
 public class JobController {
@@ -48,7 +50,7 @@ public class JobController {
     }
 
     @PutMapping(value = "/jobs/{id}")
-    public Optional<Job> updateJob(@PathVariable("id") Long jobId,
+    public ResponseEntity<Job> updateJob(@PathVariable("id") Long jobId,
                                    @RequestBody Job reqJob) {
         return jobRepository.findById(jobId)
                 .map(job -> {
@@ -57,12 +59,16 @@ public class JobController {
                     job.setSalaryRangeMax(reqJob.getSalaryRangeMax());
                     job.setSalaryRangeMin(reqJob.getSalaryRangeMin());
                     job.setTitle(reqJob.getTitle());
-                    job.setEmployer(reqJob.getEmployer());
-                    job.setJobCategories(reqJob.getJobCategories());
-                    job.setApplications(reqJob.getApplications());
                     return job;
                 })
-                .map(jobRepository::save);
+                .map(jobRepository::save)
+                .map(category -> ResponseEntity
+                        .ok()
+                        .location(resourceUri(jobId))
+                        .body(category))
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("CategoryID " + jobId + " not found")
+                );
     }
 
     @DeleteMapping(value = "/jobs/{id}")
