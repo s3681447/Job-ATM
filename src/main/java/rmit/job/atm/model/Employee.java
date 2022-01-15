@@ -41,4 +41,6 @@ public class Employee {
 
 	private String expLevel;
 
+	@Column(unique = true)
+	private String tel;
 }

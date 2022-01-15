@@ -38,7 +38,7 @@ public class JobController {
 
     @PostMapping(value = "/jobs")
     public ResponseEntity<Job> saveJob(@RequestBody Job reqJob) {
-        Job job = null;
+        Job job;
         try {
             job = jobRepository.save(reqJob);
         }
